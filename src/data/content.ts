@@ -21,6 +21,7 @@ export type TeamMember = {
   image: string
   imageAlt?: string
   bio?: string
+  quote?: boolean
   email?: string
   linkedin?: string
 }
@@ -52,6 +53,10 @@ export const communityImages = {
   volunteerPortrait: "/images/community/volunteer-portrait.jpg",
   mealDelivery: "/images/community/meal-delivery.jpg",
   teamGroup: "/images/community/team-group-compressed.jpg",
+}
+
+export const leadershipImages = {
+  stephenSimpson: "/images/leadership/stephen-simpson.jpg",
 }
 
 export const hero = {
@@ -172,11 +177,12 @@ const leadershipImage = communityImages.teamGroup
 
 export const leadership: TeamMember[] = [
   {
-    name: "Stephen Simpson",
-    title: "Founder / President",
-    image: leadershipImage,
-    imageAlt: "Agape Hope team members gathered together, representing organization leadership.",
-    bio: "Co-founded Agape Hope with a vision for sustained, practical, compassionate service in Jamaica.",
+    name: "Mr. Stephen Simpson",
+    title: "Founder and CEO",
+    image: leadershipImages.stephenSimpson,
+    imageAlt: "Portrait of Mr. Stephen Simpson, founder and CEO of Agape Hope Jamaica LTD.",
+    bio: "Agape is more than an organization to me-it's a lifelong mission rooted in hope, faith, and purpose. We do what we do to be a beacon of hope for those who need it most, not just for a moment, but for generations to come. This isn't temporary work; it's a movement-one that invites every person involved to be part of something greater than themselves. Our goal is to spark a chain reaction of change, inspiring others to do more, be more, and help more, because the more people we uplift, the stronger our country becomes. This is God's work, and it's an honor and a blessing to stand alongside passionate, like-minded youth who are committed to creating real change. Step by step, we are building toward a better Jamaica-and we're just getting started.",
+    quote: true,
   },
   {
     name: "Zakari Messam",
