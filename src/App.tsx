@@ -46,9 +46,13 @@ function Hero() {
 
       <Container className="grid gap-10 py-12 sm:py-16 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:pb-28 lg:pt-14">
         <motion.div {...fadeIn} className="relative z-10">
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.14em] text-foreground shadow-[0_12px_36px_rgba(43,35,32,0.08)]">
+          <p className="mb-4 inline-block max-w-full rounded-full border border-border bg-white/70 px-3 py-2 text-center text-[0.65rem] font-extrabold uppercase leading-5 tracking-[0.12em] text-foreground shadow-[0_12px_36px_rgba(43,35,32,0.08)] sm:mb-5 sm:px-4 sm:text-xs sm:tracking-[0.14em]">
             <span aria-hidden="true">🇯🇲</span>
-            {hero.eyebrow}
+            <span className="sm:hidden"> {hero.eyebrowCompact}</span>
+            <span className="hidden sm:inline"> {hero.eyebrow}</span>
+          </p>
+          <p className="mb-3 max-w-2xl text-sm font-extrabold leading-6 tracking-[0.18em] text-primary sm:text-base">
+            {hero.organizationName}
           </p>
           <h1 className="max-w-3xl font-display text-5xl font-bold leading-[0.96] text-foreground sm:text-6xl xl:text-7xl">
             Sharing <span className="text-primary">love.</span>

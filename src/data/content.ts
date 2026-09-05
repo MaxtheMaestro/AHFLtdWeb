@@ -60,10 +60,12 @@ export const leadershipImages = {
 }
 
 export const hero = {
-  eyebrow: "Jamaica-born community care",
+  eyebrow: "Jamaica-born • Community-driven • Built on hope",
+  eyebrowCompact: "Born in Jamaica • Built for community",
+  organizationName: "Agape Hope Foundation of Jamaica Limited",
   title: "Sharing love. Giving hope.",
   description:
-    "Agape Hope Jamaica LTD brings volunteers, donors, and community partners together to support families, young people, and neighborhoods through practical service rooted in unconditional love.",
+    "Agape Hope Foundation of Jamaica Limited brings volunteers, donors, and community partners together to support families, young people, and neighborhoods through practical service rooted in unconditional love.",
   primaryCta: "Support the mission",
   secondaryCta: "Explore our work",
   image: communityImages.outreachGroup,
