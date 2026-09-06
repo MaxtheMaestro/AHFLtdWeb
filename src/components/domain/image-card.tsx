@@ -9,14 +9,21 @@ type ImageCardProps = {
   alt: string
   category?: string
   date?: string
+  objectPosition?: string
 }
 
-export function ImageCard({ title, description, image, alt, category, date }: ImageCardProps) {
+export function ImageCard({ title, description, image, alt, category, date, objectPosition = "center" }: ImageCardProps) {
   return (
     <motion.article whileHover={{ y: -4 }} transition={{ duration: 0.2 }}>
       <Card className="h-full overflow-hidden p-0">
         <div className="aspect-[4/3] overflow-hidden rounded-t-card bg-muted">
-          <img src={image} alt={alt} className="h-full w-full object-cover transition duration-500 hover:scale-105" loading="lazy" />
+          <img
+            src={image}
+            alt={alt}
+            className="h-full w-full object-cover object-center transition duration-500 hover:scale-105"
+            style={{ objectPosition }}
+            loading="lazy"
+          />
         </div>
         <div className="p-5 sm:p-6">
           <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-extrabold uppercase tracking-[0.12em] text-primary">
@@ -31,11 +38,11 @@ export function ImageCard({ title, description, image, alt, category, date }: Im
   )
 }
 
-export function FeaturedCard({ title, description, image, alt, category }: ImageCardProps) {
+export function FeaturedCard({ title, description, image, alt, category, objectPosition = "center" }: ImageCardProps) {
   return (
     <article className="grid overflow-hidden rounded-card border border-border bg-white shadow-[0_18px_60px_rgba(43,35,32,0.07)] lg:grid-cols-2">
       <div className="min-h-72 overflow-hidden bg-muted lg:min-h-full">
-        <img src={image} alt={alt} className="h-full w-full object-cover" loading="lazy" />
+        <img src={image} alt={alt} className="h-full w-full object-cover object-center" style={{ objectPosition }} loading="lazy" />
       </div>
       <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
         {category ? <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.14em] text-primary">{category}</p> : null}

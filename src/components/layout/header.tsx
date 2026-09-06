@@ -96,7 +96,7 @@ export function Header() {
           <img
             src={siteConfig.logo.src}
             alt={siteConfig.logo.alt}
-            className="h-12 w-12 shrink-0 rounded-full border border-border bg-white object-contain p-0.5 shadow-brand sm:h-14 sm:w-14"
+            className="h-12 w-12 shrink-0 rounded-full border border-border bg-white object-contain object-center p-0.5 shadow-brand sm:h-14 sm:w-14"
           />
           <span className="min-w-0">
             <span className="block max-w-[11.5rem] truncate font-brand text-[1.08rem] font-black leading-none text-primary min-[390px]:max-w-[14rem] min-[390px]:text-xl sm:hidden">
