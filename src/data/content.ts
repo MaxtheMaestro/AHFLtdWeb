@@ -285,6 +285,6 @@ export const faqs: FAQ[] = [
   {
     question: "Is Agape Hope only active in one parish?",
     answer:
-      "The organization began in Jamaica and organizes around community need. Contact the team for the most current project locations and partnership opportunities.",
+      "No. While our work may be concentrated in particular communities at different times, Agape Hope Foundation of Jamaica Limited is not limited to any one parish. Our goal is to extend support wherever there is a genuine need and where our resources, partnerships, and volunteers allow us to make a meaningful difference. As we continue to grow, we hope to reach and serve even more communities across Jamaica.",
   },
 ]
