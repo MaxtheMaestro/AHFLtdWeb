@@ -10,7 +10,7 @@ export function Footer() {
             <img
               src={siteConfig.logo.src}
               alt={siteConfig.logo.alt}
-              className="h-16 w-16 shrink-0 rounded-full border border-white/16 bg-white object-contain p-1"
+              className="h-16 w-16 shrink-0 rounded-full border border-white/16 bg-white object-contain object-center p-1"
               loading="lazy"
             />
             <p className="font-brand text-3xl font-black leading-none text-primary">{siteConfig.brandLockup}</p>

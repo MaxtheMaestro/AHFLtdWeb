@@ -86,7 +86,8 @@ function Hero() {
                   key={image.src}
                   src={image.src}
                   alt=""
-                  className="h-11 w-11 rounded-full border-2 border-white object-cover shadow-sm"
+                  className="h-11 w-11 rounded-full border-2 border-white object-cover object-center shadow-sm"
+                  style={{ objectPosition: image.objectPosition || "center" }}
                   loading="lazy"
                 />
               ))}
@@ -171,9 +172,9 @@ function InvolvementPaths() {
   return (
     <Section id="help">
       <SectionHeader
-        eyebrow="What we do"
-        title="Clear paths from compassion to action."
-        description="A strong charity homepage should quickly show who is helped and how supporters can participate."
+        eyebrow="Who we help"
+        title="Whoever, whenever, and however we can."
+        description="Agape Hope responds to people first: families under pressure, young people ready to serve, and communities facing practical needs. The work adapts to the moment, whether that means food, supplies, encouragement, home repair support, or hands-on volunteer service."
       />
       <Container className="grid gap-5 md:grid-cols-3">
         {involvementPaths.map((path, index) => (
@@ -216,7 +217,7 @@ function Projects() {
       <SectionHeader
         eyebrow="Community work"
         title="Evidence of hope in action."
-        description="Fundraising, donations, family visits, and Labour Day projects give supporters clear paths into real work."
+        description="Project highlights are named around the real work supporters can recognize: rebuilding help, meal delivery, donation drives, family visits, and recurring community service."
       />
       <Container>
         <FeaturedCard {...projects[0]} />
@@ -240,7 +241,13 @@ function StorySections() {
             className="grid overflow-hidden rounded-image border border-border bg-white shadow-[0_18px_60px_rgba(43,35,32,0.07)] lg:grid-cols-2"
           >
             <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-              <img src={block.image} alt={block.alt} className="h-full min-h-80 w-full object-cover" loading="lazy" />
+              <img
+                src={block.image}
+                alt={block.alt}
+                className="h-full min-h-80 w-full object-cover object-center"
+                style={{ objectPosition: block.objectPosition || "center" }}
+                loading="lazy"
+              />
             </div>
             <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12">
               <p className="mb-3 text-sm font-extrabold uppercase tracking-[0.14em] text-primary">{block.eyebrow}</p>
@@ -266,9 +273,9 @@ function Gallery() {
   return (
     <Section id="gallery">
       <SectionHeader
-        eyebrow="In the field"
-        title="Real moments from Agape Hope’s community work."
-        description="These photos bring the mission closer: volunteers, visits, rebuilding support, and the young people helping carry hope into Jamaican communities."
+        eyebrow="Project gallery"
+        title="Photo evidence from outreach, rebuilding, and service days."
+        description="Each image is labeled so the gallery reads as a record of action, not just a collection of photos."
       />
       <Container className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
         <article className="group overflow-hidden rounded-image border border-border bg-white shadow-[0_18px_60px_rgba(43,35,32,0.07)]">
@@ -276,19 +283,32 @@ function Gallery() {
             <img
               src={featured.src}
               alt={featured.alt}
-              className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+              className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+              style={{ objectPosition: featured.objectPosition || "center" }}
               loading="lazy"
             />
           </div>
-          <p className="p-5 text-sm font-semibold leading-6 text-foreground/72">{featured.caption}</p>
+          <div className="p-5">
+            <h3 className="font-display text-2xl font-bold leading-tight text-foreground">{featured.title}</h3>
+            <p className="mt-2 text-sm font-semibold leading-6 text-foreground/72">{featured.caption}</p>
+          </div>
         </article>
-        <div className="grid gap-5 sm:grid-cols-3 lg:grid-cols-1">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
           {supporting.map((image) => (
             <article key={image.src} className="overflow-hidden rounded-card border border-border bg-white">
               <div className="aspect-[4/3] overflow-hidden bg-muted lg:aspect-[16/9]">
-                <img src={image.src} alt={image.alt} className="h-full w-full object-cover" loading="lazy" />
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="h-full w-full object-cover object-center"
+                  style={{ objectPosition: image.objectPosition || "center" }}
+                  loading="lazy"
+                />
               </div>
-              <p className="p-4 text-xs font-bold leading-5 text-foreground/68">{image.caption}</p>
+              <div className="p-4">
+                <h3 className="text-sm font-extrabold leading-5 text-foreground">{image.title}</h3>
+                <p className="mt-1 text-xs font-bold leading-5 text-foreground/68">{image.caption}</p>
+              </div>
             </article>
           ))}
         </div>

@@ -6,7 +6,13 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
     <Card className="h-full">
       <div className="aspect-[5/4] overflow-hidden rounded-image bg-muted">
-        <img src={member.image} alt={member.imageAlt || `Agape Hope team image for ${member.name}`} className="h-full w-full object-cover" loading="lazy" />
+        <img
+          src={member.image}
+          alt={member.imageAlt || `Agape Hope team image for ${member.name}`}
+          className="h-full w-full object-cover object-center"
+          style={{ objectPosition: member.objectPosition || "center" }}
+          loading="lazy"
+        />
       </div>
       <div className="mt-5">
         <h3 className="font-display text-2xl font-bold leading-tight text-foreground">{member.name}</h3>
