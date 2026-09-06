@@ -22,15 +22,21 @@ const fadeIn = {
 }
 
 function Hero() {
-  const heroStats = [
-    { value: "2021", label: "Founded in Jamaica", detail: "A mission shaped by love", icon: Heart },
+  const heroStats: {
+    value: string
+    label: string
+    detail: string
+    icon: typeof Heart
+    eyebrow?: string
+  }[] = [
+    { value: "2021", eyebrow: "EST.", label: "Founded in Jamaica", detail: "A mission shaped by love", icon: Heart },
     { value: "8+", label: "Leadership roles", detail: "Organized for service", icon: Users },
     { value: "Ongoing", label: "Community projects", detail: "Practical help where needed", icon: HandHeart },
     { value: "Countless", label: "Lives touched", detail: "Through care and compassion", icon: Gift },
   ]
 
   return (
-    <section className="relative isolate overflow-hidden bg-muted">
+    <section id="top" className="relative isolate scroll-mt-24 overflow-hidden bg-muted">
       <div
         aria-hidden="true"
         className="absolute -bottom-28 -left-24 -z-10 h-72 w-[46rem] rounded-[55%] bg-primary-hover opacity-95 sm:h-80"
@@ -116,6 +122,7 @@ function Hero() {
                 <stat.icon size={21} aria-hidden="true" />
               </span>
               <span>
+                {stat.eyebrow ? <span className="mb-1 block text-[0.66rem] font-extrabold uppercase leading-none tracking-[0.18em] text-primary/72">{stat.eyebrow}</span> : null}
                 <span className="block font-display text-3xl font-bold leading-none text-foreground">{stat.value}</span>
                 <span className="mt-1 block text-sm font-extrabold text-foreground">{stat.label}</span>
                 <span className="mt-1 block text-xs font-medium leading-5 text-foreground/68">{stat.detail}</span>
@@ -380,7 +387,7 @@ export default function App() {
   }, [])
 
   return (
-    <div id="top" className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main>
         <Hero />
