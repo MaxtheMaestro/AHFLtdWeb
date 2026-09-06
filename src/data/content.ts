@@ -201,7 +201,7 @@ export const leadership: TeamMember[] = [
   },
   {
     name: "Zakari Messam",
-    title: "Co-founder",
+    title: "Founding Advisor",
     image: leadershipImage,
     imageAlt: "Agape Hope team members gathered together, representing organization leadership.",
     objectPosition: "center 62%",
