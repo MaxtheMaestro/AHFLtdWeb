@@ -14,10 +14,8 @@ export const siteConfig = {
   },
   contact: {
     location: "Jamaica",
-    email: "agapehopefoundation@gmail.com",
+    email: "agapehopeja@gmail.com",
     phone: "",
-    formspreeEndpoint:
-      import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/your-form-id",
   },
   donateHref: "#contact",
   volunteerHref: "#contact",

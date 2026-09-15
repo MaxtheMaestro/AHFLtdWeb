@@ -381,7 +381,7 @@ function Contact() {
           </p>
           <h2 className="font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl">Tell us how you want to help.</h2>
           <p className="mt-5 text-lg font-medium leading-8 text-foreground/72">
-            Use the form for volunteering, donations, partnerships, media, or general inquiries. Messages can route through Formspree without a custom backend.
+            Reach out for assistance, volunteering, donations, partnerships, community outreach, media, or general questions. The form only asks for what the team needs to review and respond well.
           </p>
           <div className="mt-6 rounded-card border border-border bg-white p-5 text-sm leading-6 text-foreground/72">
             <p className="font-bold text-foreground">{siteConfig.tagline}</p>
@@ -389,9 +389,9 @@ function Contact() {
             <p>{siteConfig.contact.location}</p>
           </div>
         </div>
-        <Card className="p-5 sm:p-6 lg:p-8">
+        <div className="rounded-image bg-white p-5 shadow-[0_18px_60px_rgba(43,35,32,0.07)] sm:p-6 lg:p-8">
           <ContactForm />
-        </Card>
+        </div>
       </Container>
     </Section>
   )
