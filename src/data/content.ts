@@ -22,6 +22,8 @@ export type TeamMember = {
   image: string
   imageAlt?: string
   objectPosition?: string
+  imageScale?: number
+  imageTransformOrigin?: string
   bio?: string
   quote?: boolean
   email?: string
@@ -57,10 +59,17 @@ export const communityImages = {
   volunteerPortrait: "/images/community/volunteer-portrait.jpg",
   mealDelivery: "/images/community/meal-delivery.jpg",
   teamGroup: "/images/community/team-group-compressed.jpg",
+  labourDayYardCleanup: "/images/community/labour-day-may-pen-yard-cleanup.jpg",
+  labourDayVolunteerTools: "/images/community/labour-day-may-pen-volunteer-tools.jpg",
+  labourDayVolunteerPeace: "/images/community/labour-day-may-pen-volunteer-peace.jpg",
+  labourDayGroundwork: "/images/community/labour-day-may-pen-groundwork.jpg",
+  labourDayRaking: "/images/community/labour-day-may-pen-raking.jpg",
 }
 
 export const leadershipImages = {
   stephenSimpson: "/images/leadership/stephen-simpson.jpg",
+  paultonMcCarthyWalker: "/images/leadership/paulton-mccarthy-walker.jpg",
+  khaeimMay: "/images/leadership/khaeim-may.jpg",
 }
 
 export const hero = {
@@ -195,7 +204,7 @@ export const leadership: TeamMember[] = [
     title: "Founder and CEO",
     image: leadershipImages.stephenSimpson,
     imageAlt: "Portrait of Mr. Stephen Simpson, founder and CEO of Agape Hope Jamaica LTD.",
-    objectPosition: "center",
+    objectPosition: "50% 18%",
     bio: "Agape is more than an organization to me-it's a lifelong mission rooted in hope, faith, and purpose. We do what we do to be a beacon of hope for those who need it most, not just for a moment, but for generations to come. This isn't temporary work; it's a movement-one that invites every person involved to be part of something greater than themselves. Our goal is to spark a chain reaction of change, inspiring others to do more, be more, and help more, because the more people we uplift, the stronger our country becomes. This is God's work, and it's an honor and a blessing to stand alongside passionate, like-minded youth who are committed to creating real change. Step by step, we are building toward a better Jamaica-and we're just getting started.",
     quote: true,
   },
@@ -210,18 +219,22 @@ export const leadership: TeamMember[] = [
   {
     name: "Paulton McCarthy-Walker",
     title: "Vice President",
-    image: leadershipImage,
-    imageAlt: "Agape Hope team members gathered together, representing organization leadership.",
-    objectPosition: "center 62%",
-    bio: "Publicly identified with Agape Hope leadership as vice president, supporting the organization’s continued growth.",
+    image: leadershipImages.paultonMcCarthyWalker,
+    imageAlt: "Paulton McCarthy-Walker, Vice President of Agape Hope Jamaica LTD.",
+    objectPosition: "50% 16%",
+    bio: "Agape Hope reminds me that leadership is service before anything else. It is about showing up with humility, listening to what people truly need, and helping turn compassion into action. Every act of care, every outreach effort, and every person we encourage is part of building a stronger Jamaica together, one community and one family at a time.",
+    quote: true,
   },
   {
     name: "Khaeim May",
     title: "Outreach Director",
-    image: leadershipImage,
-    imageAlt: "Agape Hope team members gathered together, representing organization leadership.",
-    objectPosition: "center 62%",
-    bio: "Supports outreach coordination and the practical community service that carries the organization’s mission forward.",
+    image: leadershipImages.khaeimMay,
+    imageAlt: "Khaeim May, Outreach Director of Agape Hope Jamaica LTD.",
+    objectPosition: "39% 18%",
+    imageScale: 2.35,
+    imageTransformOrigin: "39% 18%",
+    bio: "Outreach is about showing people that hope is still close, even when life feels heavy. I am proud to help carry Agape Hope's mission into communities through practical love, teamwork, and consistency. Whether we are cleaning a yard, delivering meals, or encouraging a family, the goal is always to let people know they are seen, valued, and supported.",
+    quote: true,
   },
 ]
 
@@ -229,45 +242,80 @@ export const galleryImages: GalleryImage[] = [
   {
     src: communityImages.outreachGroup,
     alt: "Agape Hope volunteers and community members gathered at an outreach project.",
-    title: "Volunteer Response in Howells Content",
-    caption: "A broad volunteer and community presence at the center of outreach and rebuilding support.",
+    title: "Community Outreach in Howells Content",
+    caption: "Volunteers and neighbors gathered in Clarendon to respond to local needs with practical help, encouragement, and shared care.",
     objectPosition: "center",
     featured: true,
   },
   {
     src: communityImages.paintingHome,
     alt: "An Agape Hope volunteer painting a home wall.",
-    title: "Home Repair Support in Action",
-    caption: "Hands-on home improvement work that turns concern into visible help.",
+    title: "Hands-On Home Improvement",
+    caption: "A volunteer helps refresh a home exterior, showing how simple repairs can restore dignity and comfort for families.",
     objectPosition: "center",
   },
   {
     src: communityImages.volunteerTeamSmiles,
     alt: "Three Agape Hope volunteers smiling together.",
-    title: "Youth Volunteers Ready to Serve",
-    caption: "Young volunteers bringing warmth, consistency, and energy to service days.",
-    objectPosition: "center",
+    title: "Young Volunteers Ready to Serve",
+    caption: "Youth volunteers bring warmth, reliability, and energy to outreach days across the communities Agape Hope supports.",
+    objectPosition: "center 24%",
   },
   {
     src: communityImages.mealDelivery,
     alt: "An Agape Hope volunteer holding prepared meals.",
-    title: "Prepared Meals and Practical Care",
-    caption: "Food support and essentials delivered with dignity during outreach.",
-    objectPosition: "center",
+    title: "Meals Shared With Dignity",
+    caption: "Prepared meals and essentials are organized for families who need practical support and a reminder that they are not alone.",
+    objectPosition: "center 20%",
   },
   {
     src: communityImages.volunteerFriends,
     alt: "Two Agape Hope volunteers smiling during outreach.",
-    title: "Service Built on Relationship",
-    caption: "Friendship and teamwork at the center of community care.",
+    title: "Friendship in Service",
+    caption: "Volunteers build trust and connection while working together to make community care feel personal and consistent.",
     objectPosition: "center",
   },
   {
     src: communityImages.teamGroup,
     alt: "Agape Hope team members standing together.",
-    title: "The Team Behind the Work",
-    caption: "A growing team rooted in Jamaica, shared responsibility, and service.",
+    title: "The Team Behind the Mission",
+    caption: "Agape Hope's growing volunteer team is rooted in shared responsibility, compassion, and service to Jamaica.",
     objectPosition: "center 62%",
+  },
+  {
+    src: communityImages.labourDayYardCleanup,
+    alt: "An Agape Hope volunteer raking leaves during a Labour Day home cleanup in May Pen, Clarendon.",
+    title: "Labour Day Home Cleanup in May Pen",
+    caption: "Volunteers helped clean and improve the home of an elderly woman in May Pen, turning Labour Day into practical compassion.",
+    objectPosition: "center 58%",
+  },
+  {
+    src: communityImages.labourDayVolunteerTools,
+    alt: "An Agape Hope volunteer receiving work gloves during the May Pen Labour Day service project.",
+    title: "Preparing to Serve",
+    caption: "Team members shared tools and worked side by side to support a safer, cleaner home environment for an elder in need.",
+    objectPosition: "center 36%",
+  },
+  {
+    src: communityImages.labourDayVolunteerPeace,
+    alt: "An Agape Hope volunteer smiling during the Labour Day community service project in May Pen.",
+    title: "Joy in Community Service",
+    caption: "The May Pen project reflected Agape Hope's belief that service can be hardworking, hopeful, and deeply human.",
+    objectPosition: "center 34%",
+  },
+  {
+    src: communityImages.labourDayGroundwork,
+    alt: "Agape Hope volunteers clearing grass and debris during the May Pen Labour Day project.",
+    title: "Clearing the Yard With Care",
+    caption: "Volunteers removed overgrowth and debris around the home, helping create a more manageable outdoor space.",
+    objectPosition: "center 58%",
+  },
+  {
+    src: communityImages.labourDayRaking,
+    alt: "Agape Hope volunteers raking a yard during the Labour Day service project in May Pen, Clarendon.",
+    title: "Practical Help for an Elder",
+    caption: "The team raked, cleared, and worked together to improve the surroundings of an elderly woman's home in Clarendon.",
+    objectPosition: "center 58%",
   },
 ]
 
