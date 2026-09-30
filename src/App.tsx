@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle2, Gift, HandHeart, Heart, HeartHandshake, Spark
 import { motion } from "framer-motion"
 import { useEffect } from "react"
 import { ContactForm } from "./components/domain/contact-form"
+import { AnniversaryBanner } from "./components/AnniversaryBanner"
 import { FeaturedCard, ImageCard } from "./components/domain/image-card"
 import { TeamMemberCard } from "./components/domain/team-member-card"
 import { Footer } from "./components/layout/footer"
@@ -12,6 +13,7 @@ import { Container } from "./components/ui/container"
 import { LiquidGlassButton } from "./components/ui/liquid-glass-button"
 import { Section, SectionHeader } from "./components/ui/section"
 import { faqs, galleryImages, hero, involvementPaths, leadership, programs, projects, storyBlocks } from "./data/content"
+import { ANNIVERSARY_ENABLED } from "./config/anniversary"
 import { siteConfig } from "./config/site"
 
 const fadeIn = {
@@ -408,6 +410,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {ANNIVERSARY_ENABLED ? <AnniversaryBanner /> : null}
       <Header />
       <main>
         <Hero />

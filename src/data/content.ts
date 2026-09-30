@@ -68,6 +68,7 @@ export const communityImages = {
 
 export const leadershipImages = {
   stephenSimpson: "/images/leadership/stephen-simpson.jpg",
+  zakariMessam: "/images/leadership/zakari-messam.jpg",
   paultonMcCarthyWalker: "/images/leadership/paulton-mccarthy-walker.jpg",
   khaeimMay: "/images/leadership/khaeim-may.jpg",
 }
@@ -196,8 +197,6 @@ export const storyBlocks = [
   },
 ]
 
-const leadershipImage = communityImages.teamGroup
-
 export const leadership: TeamMember[] = [
   {
     name: "Mr. Stephen Simpson",
@@ -211,10 +210,11 @@ export const leadership: TeamMember[] = [
   {
     name: "Zakari Messam",
     title: "Founding Advisor",
-    image: leadershipImage,
-    imageAlt: "Agape Hope team members gathered together, representing organization leadership.",
-    objectPosition: "center 62%",
-    bio: "Co-founded the organization and supports its mission to make volunteerism tangible and community-centered.",
+    image: leadershipImages.zakariMessam,
+    imageAlt: "Zakari Messam smiling with children during community outreach in Jamaica.",
+    objectPosition: "76% 38%",
+    bio: "Agape Hope has always been about more than organizing projects; it is about meeting people with love, dignity, and consistency. When we stand beside children, families, and communities, we are reminded that hope is not just something we talk about. Hope is something we practice through our time, our presence, our resources, and our willingness to serve even when no one is watching. My prayer is that every person who encounters Agape Hope feels seen, valued, and encouraged to believe that better is still possible. As we continue to grow, I want our work to inspire young people across Jamaica to lead with compassion, to give what they can, and to understand that real change begins when ordinary people choose to care deeply and act faithfully.",
+    quote: true,
   },
   {
     name: "Paulton McCarthy-Walker",
