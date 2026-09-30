@@ -32,8 +32,8 @@ export const navLinks = [
 
 export const socialLinks = [
   { label: "Email", href: `mailto:${siteConfig.contact.email}`, icon: Mail },
-  { label: "Instagram", href: "https://www.instagram.com/agapehopefoundation/", icon: Instagram },
-  { label: "Facebook", href: "https://www.facebook.com/", icon: Facebook },
+  { label: "Instagram", href: "https://www.instagram.com/agapehope.ja?stkn=ZHphYmlpdXgwYmwx&utm_source=qr", icon: Instagram },
+  { label: "Facebook", href: "https://www.facebook.com/share/1DneSomHAv/?mibextid=wwXIfr", icon: Facebook },
 ]
 
 export const footerDetails = [

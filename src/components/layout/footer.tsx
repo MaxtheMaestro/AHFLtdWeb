@@ -43,6 +43,8 @@ export function Footer() {
                 key={link.label}
                 href={link.href}
                 aria-label={link.label}
+                target="_blank"
+                rel="noreferrer"
                 className="grid h-10 w-10 place-items-center rounded-full border border-white/18 text-white/78 hover:bg-white/10 hover:text-white"
               >
                 <link.icon size={18} aria-hidden="true" />
