@@ -277,9 +277,9 @@ function Gallery() {
         title="Photo evidence from outreach, rebuilding, and service days."
         description="Each image is labeled so the gallery reads as a record of action, not just a collection of photos."
       />
-      <Container className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-        <article className="group overflow-hidden rounded-image border border-border bg-white shadow-[0_18px_60px_rgba(43,35,32,0.07)]">
-          <div className="aspect-[4/3] overflow-hidden bg-muted">
+      <Container className="grid gap-5">
+        <article className="group grid overflow-hidden rounded-image border border-border bg-white shadow-[0_18px_60px_rgba(43,35,32,0.07)] lg:grid-cols-[1.35fr_0.65fr]">
+          <div className="aspect-[4/3] overflow-hidden bg-muted lg:aspect-auto lg:min-h-[360px]">
             <img
               src={featured.src}
               alt={featured.alt}
@@ -288,15 +288,15 @@ function Gallery() {
               loading="lazy"
             />
           </div>
-          <div className="p-5">
-            <h3 className="font-display text-2xl font-bold leading-tight text-foreground">{featured.title}</h3>
-            <p className="mt-2 text-sm font-semibold leading-6 text-foreground/72">{featured.caption}</p>
+          <div className="flex flex-col justify-center p-5 sm:p-6 lg:p-8">
+            <h3 className="font-display text-3xl font-bold leading-tight text-foreground sm:text-4xl">{featured.title}</h3>
+            <p className="mt-3 text-base font-semibold leading-7 text-foreground/72">{featured.caption}</p>
           </div>
         </article>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {supporting.map((image) => (
             <article key={image.src} className="overflow-hidden rounded-card border border-border bg-white">
-              <div className="aspect-[4/3] overflow-hidden bg-muted lg:aspect-[16/9]">
+              <div className="aspect-[4/3] overflow-hidden bg-muted">
                 <img
                   src={image.src}
                   alt={image.alt}

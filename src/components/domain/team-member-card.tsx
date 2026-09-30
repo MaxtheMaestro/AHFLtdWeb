@@ -10,7 +10,11 @@ export function TeamMemberCard({ member }: { member: TeamMember }) {
           src={member.image}
           alt={member.imageAlt || `Agape Hope team image for ${member.name}`}
           className="h-full w-full object-cover object-center"
-          style={{ objectPosition: member.objectPosition || "center" }}
+          style={{
+            objectPosition: member.objectPosition || "center",
+            transform: member.imageScale ? `scale(${member.imageScale})` : undefined,
+            transformOrigin: member.imageTransformOrigin || member.objectPosition || "center",
+          }}
           loading="lazy"
         />
       </div>
