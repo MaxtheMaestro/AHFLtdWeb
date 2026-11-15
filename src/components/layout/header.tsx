@@ -10,9 +10,10 @@ function getHashFromHref(href: string) {
   return href.startsWith("#") ? href : ""
 }
 
-export function Header() {
+export function Header({ homeLinks = false }: { homeLinks?: boolean }) {
+  const resolveHref = (href: string) => homeLinks && href.startsWith("#") ? `/${href}` : href
   const [open, setOpen] = useState(false)
-  const [activeHref, setActiveHref] = useState(navLinks[0]?.href ?? "#top")
+  const [activeHref, setActiveHref] = useState(homeLinks ? "" : navLinks[0]?.href ?? "#top")
   const pendingHrefRef = useRef<string | null>(null)
   const pendingTimeoutRef = useRef<number | null>(null)
   const sectionIds = useMemo(() => navLinks.map((link) => getHashFromHref(link.href).slice(1)).filter(Boolean), [])
@@ -20,6 +21,7 @@ export function Header() {
   const close = () => setOpen(false)
 
   useEffect(() => {
+    if (homeLinks) return
     const sectionElements = sectionIds.map((id) => document.getElementById(id)).filter((element): element is HTMLElement => Boolean(element))
 
     if (!sectionElements.length) return
@@ -72,9 +74,10 @@ export function Header() {
       window.removeEventListener("hashchange", findCurrentSection)
       if (pendingTimeoutRef.current) window.clearTimeout(pendingTimeoutRef.current)
     }
-  }, [sectionIds])
+  }, [sectionIds, homeLinks])
 
   const handleNavClick = (href: string) => {
+    if (homeLinks) { close(); return }
     pendingHrefRef.current = href
     if (pendingTimeoutRef.current) window.clearTimeout(pendingTimeoutRef.current)
     pendingTimeoutRef.current = window.setTimeout(() => {
@@ -88,7 +91,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-muted/92 backdrop-blur-md">
       <Container className="flex min-h-18 items-center justify-between gap-4">
         <a
-          href="#top"
+          href={resolveHref("#top")}
           onClick={() => handleNavClick("#top")}
           aria-current={activeHref === "#top" ? "page" : undefined}
           className="flex min-w-0 items-center gap-3 rounded-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -115,7 +118,7 @@ export function Header() {
             return (
               <a
                 key={link.href}
-                href={link.href}
+                href={resolveHref(link.href)}
                 aria-current={active ? "page" : undefined}
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
@@ -138,7 +141,7 @@ export function Header() {
 
         <div className="hidden lg:block">
           <Button asChild size="lg" className="whitespace-nowrap shadow-brand">
-            <a href={siteConfig.donateHref}>
+            <a href={resolveHref(siteConfig.donateHref)}>
               <Heart size={17} aria-hidden="true" /> Donate now
             </a>
           </Button>
@@ -171,7 +174,7 @@ export function Header() {
               {navLinks.map((link) => (
                 <a
                   key={link.href}
-                  href={link.href}
+                  href={resolveHref(link.href)}
                   aria-current={activeHref === link.href ? "page" : undefined}
                   onClick={() => handleNavClick(link.href)}
                   className={cn(
@@ -183,7 +186,7 @@ export function Header() {
                 </a>
               ))}
               <Button asChild className="mt-2 w-full" onClick={close}>
-                <a href={siteConfig.donateHref}>
+                <a href={resolveHref(siteConfig.donateHref)}>
                   <Heart size={17} aria-hidden="true" /> Donate now
                 </a>
               </Button>

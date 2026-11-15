@@ -1,7 +1,8 @@
 import { footerDetails, navLinks, siteConfig, socialLinks } from "../../config/site"
+import { PrivacyLink } from "./privacy-link"
 import { Container } from "../ui/container"
 
-export function Footer() {
+export function Footer({ homeLinks = false }: { homeLinks?: boolean }) {
   return (
     <footer className="bg-foreground py-12 text-white">
       <Container className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
@@ -21,10 +22,11 @@ export function Footer() {
           <p className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-white/55">Explore</p>
           <nav className="grid gap-2" aria-label="Footer navigation">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="text-sm text-white/78 hover:text-white">
+              <a key={link.href} href={homeLinks ? `/${link.href}` : link.href} className="text-sm text-white/78 hover:text-white">
                 {link.label}
               </a>
             ))}
+            <PrivacyLink className="text-sm text-white/78 hover:text-white" />
           </nav>
         </div>
         <div>

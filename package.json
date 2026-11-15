@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test": "npm run build && node --test tests/privacy-safety.test.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

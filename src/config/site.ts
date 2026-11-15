@@ -1,5 +1,8 @@
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
 
+import { privacyPolicy } from "./privacy"
+import { getSiteUrl } from "./website"
+
 export const siteConfig = {
   name: "Agape Hope Jamaica LTD",
   shortName: "Agape Hope",
@@ -7,14 +10,14 @@ export const siteConfig = {
   tagline: "Sharing Love; Giving Hope",
   description:
     "A Jamaica-born volunteer organization serving families, young people, and communities through outreach, donations, fundraising, and practical acts of compassion.",
-  url: "https://agapehopefoundation.framer.website/",
+  url: getSiteUrl(import.meta.env.VITE_SITE_URL),
   logo: {
     src: "/images/brand/agape-hope-logo.jpg",
     alt: "The Agape Foundation of Jamaica Limited logo with red hands holding a heart.",
   },
   contact: {
     location: "Jamaica",
-    email: "agapehopeja@gmail.com",
+    email: privacyPolicy.contactEmail,
     phone: "",
   },
   donateHref: "#contact",
