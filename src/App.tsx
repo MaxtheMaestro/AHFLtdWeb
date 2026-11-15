@@ -1,6 +1,6 @@
 import { ArrowRight, CheckCircle2, Gift, HandHeart, Heart, HeartHandshake, Sparkles, Users } from "lucide-react"
 import { motion } from "framer-motion"
-import { useEffect } from "react"
+import { lazy, Suspense, useEffect } from "react"
 import { ContactForm } from "./components/domain/contact-form"
 import { AnniversaryBanner } from "./components/AnniversaryBanner"
 import { FeaturedCard, ImageCard } from "./components/domain/image-card"
@@ -14,7 +14,10 @@ import { LiquidGlassButton } from "./components/ui/liquid-glass-button"
 import { Section, SectionHeader } from "./components/ui/section"
 import { faqs, galleryImages, hero, involvementPaths, leadership, programs, projects, storyBlocks } from "./data/content"
 import { ANNIVERSARY_ENABLED } from "./config/anniversary"
+import { getPrivacyMetadata, isPrivacyPath, privacyPath } from "./config/privacy"
 import { siteConfig } from "./config/site"
+
+const PrivacyPolicyPage = lazy(() => import("./pages/privacy-policy"))
 
 const fadeIn = {
   initial: { opacity: 0, y: 18 },
@@ -383,7 +386,7 @@ function Contact() {
           </p>
           <h2 className="font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl">Tell us how you want to help.</h2>
           <p className="mt-5 text-lg font-medium leading-8 text-foreground/72">
-            Reach out for assistance, volunteering, donations, partnerships, community outreach, media, or general questions. The form only asks for what the team needs to review and respond well.
+            Reach out for assistance, volunteering, donations, partnerships, community outreach, media, or general questions. Please share only what is needed for your inquiry.
           </p>
           <div className="mt-6 rounded-card border border-border bg-white p-5 text-sm leading-6 text-foreground/72">
             <p className="font-bold text-foreground">{siteConfig.tagline}</p>
@@ -401,12 +404,30 @@ function Contact() {
 
 export default function App() {
   useEffect(() => {
+    const isPolicy = isPrivacyPath(window.location.pathname)
+    const metadata = getPrivacyMetadata(import.meta.env.DEV)
+    document.title = isPolicy ? metadata.title : siteConfig.name
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]')
+    if (isPolicy && description) description.content = metadata.description
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    if (canonical) canonical.href = new URL(isPolicy ? privacyPath : "/", siteConfig.url).href
+    if (isPolicy && !metadata.indexable) {
+      let robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]')
+      const created = !robots
+      if (!robots) { robots = document.createElement("meta"); robots.name = "robots"; document.head.appendChild(robots) }
+      robots.content = "noindex, nofollow"
+      return () => { if (created) robots.remove() }
+    }
     if (!window.location.hash) return
 
     window.requestAnimationFrame(() => {
-      document.querySelector(window.location.hash)?.scrollIntoView()
+      document.getElementById(window.location.hash.slice(1))?.scrollIntoView()
     })
   }, [])
+
+  if (isPrivacyPath(window.location.pathname)) {
+    return <Suspense fallback={<p role="status">Loading page…</p>}><PrivacyPolicyPage /></Suspense>
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">

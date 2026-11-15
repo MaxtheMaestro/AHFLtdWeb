@@ -37,10 +37,8 @@ export const contactFormConfig = {
   introduction:
     "Whether you're reaching out for assistance, looking to volunteer, interested in partnering with us, or simply have a question, we'd love to hear from you.",
   instructions:
-    "Please complete the form below and provide as much information as possible. A member of the Agape Hope Jamaica LTD team will review your submission and follow up where appropriate.",
-  successTitle: "Thank you for reaching out!",
-  successMessage:
-    "Your information has been received by Agape Hope Jamaica LTD. Our team will review your submission and contact you if additional information or follow-up is required.",
+    "Please complete the form below and provide only the information needed for your inquiry. A member of the Agape Hope Jamaica LTD team will review your submission and follow up where appropriate.",
+  standaloneUrl: "https://tally.so/r/5BJ8aP",
   provider: {
     type: "tally",
     formId: import.meta.env.VITE_TALLY_CONTACT_FORM_ID,

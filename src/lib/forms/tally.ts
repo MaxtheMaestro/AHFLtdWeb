@@ -14,7 +14,7 @@ declare global {
 export function getTallyProvider(config: TallyFormProviderConfig): EmbeddedFormProvider | null {
   const formId = config.formId?.trim()
 
-  if (!formId) return null
+  if (!formId || !/^[a-zA-Z0-9]+$/.test(formId)) return null
 
   return {
     type: "tally",
@@ -34,18 +34,34 @@ export function buildTallyEmbedUrl(formId: string, options: TallyEmbedOptions = 
   return url.toString()
 }
 
-export function loadTallyEmbedScript() {
+let scriptPromise: Promise<void> | undefined
+
+// Called only after a visitor requests the form. Share one load across mounts.
+export function loadTallyEmbedScript(): Promise<void> {
   if (window.Tally?.loadEmbeds) {
-    window.Tally.loadEmbeds()
-    return
+    return Promise.resolve().then(() => window.Tally?.loadEmbeds?.())
   }
+  if (scriptPromise) return scriptPromise
 
-  const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${TALLY_SCRIPT_URL}"]`)
-  if (existingScript) return
-
-  const script = document.createElement("script")
-  script.src = TALLY_SCRIPT_URL
-  script.async = true
-  script.onload = () => window.Tally?.loadEmbeds?.()
-  document.body.appendChild(script)
+  scriptPromise = new Promise<void>((resolve, reject) => {
+    const script = document.createElement("script")
+    script.src = TALLY_SCRIPT_URL
+    script.async = true
+    script.referrerPolicy = "no-referrer"
+    const timeout = window.setTimeout(fail, 15000)
+    function fail() {
+      window.clearTimeout(timeout)
+      script.remove()
+      scriptPromise = undefined
+      reject(new Error("Tally helper unavailable"))
+    }
+    script.onerror = fail
+    script.onload = () => {
+      window.clearTimeout(timeout)
+      if (!window.Tally?.loadEmbeds) { fail(); return }
+      try { window.Tally.loadEmbeds(); resolve() } catch { fail() }
+    }
+    document.body.appendChild(script)
+  })
+  return scriptPromise
 }

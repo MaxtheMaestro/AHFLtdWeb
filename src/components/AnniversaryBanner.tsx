@@ -3,7 +3,6 @@ import { motion } from "framer-motion"
 import { useEffect, useMemo, useState } from "react"
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion"
 
-const CONFETTI_STORAGE_KEY = "agape-hope-anniversary-confetti-seen-v1"
 let confettiPlayedThisSession = false
 
 type ConfettiPiece = {
@@ -44,17 +43,12 @@ export function AnniversaryBanner() {
   useEffect(() => {
     if (prefersReducedMotion || confettiPlayedThisSession) return
 
-    try {
-      if (window.localStorage.getItem(CONFETTI_STORAGE_KEY)) return
-      window.localStorage.setItem(CONFETTI_STORAGE_KEY, "true")
-    } catch {
-      // If storage is unavailable, still keep the burst to this app session.
-    }
-
-    confettiPlayedThisSession = true
-    setShowConfetti(true)
+    const start = window.setTimeout(() => {
+      confettiPlayedThisSession = true
+      setShowConfetti(true)
+    }, 0)
     const timeout = window.setTimeout(() => setShowConfetti(false), 2600)
-    return () => window.clearTimeout(timeout)
+    return () => { window.clearTimeout(start); window.clearTimeout(timeout) }
   }, [prefersReducedMotion])
 
   return (
@@ -65,7 +59,7 @@ export function AnniversaryBanner() {
       />
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F6C85F] to-transparent opacity-80" />
 
-      {showConfetti ? (
+      {showConfetti && !prefersReducedMotion ? (
         <div className="pointer-events-none fixed inset-x-0 top-0 z-[70] h-32 overflow-hidden" aria-hidden="true">
           {confetti.map((piece) => (
             <motion.span
